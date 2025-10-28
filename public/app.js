@@ -29,15 +29,16 @@ form.addEventListener('submit', async (e) => {
         return;
     }
 
-    // 門牌號碼格式驗證（純數字）
-    if (!/^[0-9]+$/.test(doorNumber)) {
-        showError('門牌號碼必須是數字');
+    // 門牌號碼格式驗證（1FA2格式：數字+字母+數字）
+    if (!/^[0-9][A-Z][0-9]$/.test(doorNumber)) {
+        showError('門牌號碼格式錯誤，應為：1FA2 或 2FA3 這種格式');
         return;
     }
 
-    // 電話號碼格式驗證
-    if (!/^[0-9]{10}$/.test(phoneNumber)) {
-        showError('請輸入有效的電話號碼（10位數字）');
+    // 電話號碼格式驗證（移除可能的連字號後檢查）
+    const cleanPhone = phoneNumber.replace(/[-\s]/g, '');
+    if (!/^[0-9]{9,10}$/.test(cleanPhone)) {
+        showError('請輸入有效的電話號碼（9-10位數字）');
         return;
     }
 

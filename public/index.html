@@ -15,17 +15,17 @@
 
         <div class="form-container">
             <form id="qrcodeForm">
-            <div class="input-group">
-                <label for="doorNumber">📍 門牌號碼</label>
-                <input 
-                    type="text" 
-                    id="doorNumber" 
-                    name="doorNumber" 
-                    placeholder="例如：350106 (35號之1，六樓)"
-                    required
-                    pattern="[0-9]+"
-                >
-            </div>
+                <div class="input-group">
+                    <label for="doorNumber">📍 門牌號碼</label>
+                    <input 
+                        type="text" 
+                        id="doorNumber" 
+                        name="doorNumber" 
+                        placeholder="例如：1FA2、2FA3、3FA1"
+                        required
+                        pattern="^[0-9][A-Z][0-9]$"
+                    >
+                </div>
 
             <div class="input-group">
                 <label for="phoneNumber">📱 電話號碼</label>
