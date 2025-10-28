@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>門牌號碼QR Code生成器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+    <div class="header">
+        <h1>🏠 臨時訪客證生成器</h1>
+        <p class="subtitle">輸入門牌號碼和電話號碼，快速生成訪客QR Code</p>
+    </div>
+
+        <div class="form-container">
+            <form id="qrcodeForm">
+            <div class="input-group">
+                <label for="doorNumber">📍 門牌號碼</label>
+                <input 
+                    type="text" 
+                    id="doorNumber" 
+                    name="doorNumber" 
+                    placeholder="例如：350106 (35號之1，六樓)"
+                    required
+                    pattern="[0-9]+"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="phoneNumber">📱 電話號碼</label>
+                <input 
+                    type="tel" 
+                    id="phoneNumber" 
+                    name="phoneNumber" 
+                    placeholder="例如：0975635180"
+                    required
+                    pattern="[0-9]{10}"
+                >
+            </div>
+
+                <button type="submit" class="btn-generate" id="generateBtn">
+                    <span class="btn-text">🔲 產生QR Code</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <div class="success-message">✅ QR Code已成功生成！</div>
+            
+            <div class="qrcode-display">
+                <div class="qrcode-image-container">
+                    <img id="qrcodeImage" src="" alt="QR Code">
+                </div>
+                <div class="qrcode-info">
+                    <div class="info-item">
+                        <span class="info-label">門牌號碼：</span>
+                        <span class="info-value" id="resultDoorNumber"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">手機號碼：</span>
+                        <span class="info-value" id="resultPhoneNumber"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">生成時間：</span>
+                        <span class="info-value" id="resultTimestamp"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-download" id="downloadBtn">
+                    <span class="btn-text">📥 下載QR Code</span>
+                </button>
+                <button class="btn-clear" id="clearBtn">
+                    <span class="btn-text">🔄 重新輸入</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;"></div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>正在生成QR Code...</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 門牌號碼QR Code生成器 | Powered by Node.js + Express</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
