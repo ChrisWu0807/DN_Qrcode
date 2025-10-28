@@ -2,5 +2,15 @@ node_modules/
 npm-debug.log
 .DS_Store
 .env
+.env.local
+.env.*.local
 *.log
+
+# 資料庫備份文件
+*.sql
+*.db
+
+# 敏感資訊
+secrets/
+config/production.js
 
