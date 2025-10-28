@@ -74,20 +74,19 @@ app.post('/api/generate-qrcode', async (req, res) => {
       });
     }
 
-    // 從MySQL資料庫查詢訪客
+    // 從MySQL資料庫查詢訪客（同時檢查門牌號和電話號碼）
     let visitor = null;
     try {
       const [rows] = await pool.query(
-        'SELECT * FROM visitors WHERE door_number = ? AND is_active = TRUE LIMIT 1',
-        [doorNumber]
+        'SELECT * FROM visitors WHERE door_number = ? AND phone_encrypted = ? AND is_active = TRUE LIMIT 1',
+        [doorNumber, phoneNumber]
       );
 
       if (rows.length > 0) {
         const dbVisitor = rows[0];
-        // 解密電話號碼（這裡簡化為直接比較，實際應該加密後比較）
         visitor = {
           doorNumber: dbVisitor.door_number,
-          phoneNumber: phoneNumber, // 這裡簡化處理
+          phoneNumber: phoneNumber,
           visitorName: dbVisitor.visitor_name,
           id: dbVisitor.id
         };
@@ -107,7 +106,7 @@ app.post('/api/generate-qrcode', async (req, res) => {
       return res.status(403).json({
         code: 403,
         message: '無權限',
-        desc: '門牌號碼不存在於資料庫中，無法發放訪客證',
+        desc: '門牌號碼和電話號碼組合不存在於資料庫中，無法發放訪客證',
         data: null
       });
     }
