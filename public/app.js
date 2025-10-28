@@ -35,7 +35,7 @@ form.addEventListener('submit', async (e) => {
         return;
     }
 
-    // 電話號碼格式驗證（移除可能的連字號後檢查）
+    // 電話號碼格式驗證和清理（移除連字號和空格）
     const cleanPhone = phoneNumber.replace(/[-\s]/g, '');
     if (!/^[0-9]{9,10}$/.test(cleanPhone)) {
         showError('請輸入有效的電話號碼（9-10位數字）');
@@ -46,7 +46,7 @@ form.addEventListener('submit', async (e) => {
         // 顯示載入動畫
         showLoading();
 
-        // 發送API請求
+        // 發送API請求（使用清理後的電話號碼）
         const response = await fetch('/api/generate-qrcode', {
             method: 'POST',
             headers: {
@@ -54,7 +54,7 @@ form.addEventListener('submit', async (e) => {
             },
             body: JSON.stringify({
                 doorNumber: doorNumber,
-                phoneNumber: phoneNumber
+                phoneNumber: cleanPhone  // 傳入已清理的電話號碼（無連字號）
             })
         });
 
