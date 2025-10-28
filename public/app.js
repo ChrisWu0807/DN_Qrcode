@@ -29,9 +29,9 @@ form.addEventListener('submit', async (e) => {
         return;
     }
 
-    // 門牌號碼格式驗證（1FA2格式：數字+字母+數字）
-    if (!/^[0-9][A-Z][0-9]$/.test(doorNumber)) {
-        showError('門牌號碼格式錯誤，應為：1FA2 或 2FA3 這種格式');
+    // 門牌號碼格式驗證（1FA2格式：數字+字母+字母+數字）
+    if (!/^[0-9][A-Z][A-Z][0-9]$/.test(doorNumber)) {
+        showError('門牌號碼格式錯誤，應為：1FA2 或 2FA3 這種格式（數字+兩字母+數字）');
         return;
     }
 
