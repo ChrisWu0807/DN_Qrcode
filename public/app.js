@@ -88,14 +88,24 @@ function showResult(data) {
     // 設置顯示資訊
     resultDoorNumber.textContent = data.doorNumber || '未提供';
     resultPhoneNumber.textContent = data.phoneNumber || '未提供';
-    resultTimestamp.textContent = new Date(data.timestamp).toLocaleString('zh-TW', {
+    
+    // 計算到期時間（1小時後 post）
+    const expireTime = new Date(data.expireTime || data.timestamp + 3600000);
+    resultTimestamp.textContent = `發出時間: ${new Date(data.timestamp).toLocaleString('zh-TW', {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit',
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit'
-    });
+    })} | 到期時間: ${expireTime.toLocaleString('zh-TW', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    })}`;
 
     // 隱藏表單，顯示結果
     form.reset();

@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // 訪客證有效期（小時）
-const VISITOR_PASS_EXPIRY_HOURS = parseInt(process.env.VISITOR_PASS_EXPIRY_HOURS) || 24;
+const VISITOR_PASS_EXPIRY_HOURS = parseInt(process.env.VISITOR_PASS_EXPIRY_HOURS) || 1;
 
 // MySQL連接配置（使用環境變數，雲端部署時會自動注入）
 const mysql = require('mysql2/promise');
