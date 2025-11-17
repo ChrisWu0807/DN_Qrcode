@@ -238,10 +238,10 @@ app.post('/api/generate-qrcode', async (req, res) => {
       const sign = calculateSign(currentTimestamp, APP_SECRET);
       
       // 構建請求體
-      // 設置有效時間為 1 小時（3600秒），可使用 5 次
+      // 設置有效時間為 1 小時（3600秒），可使用 99 次
       // timeValidFrom 不傳，使用默認值（當前時間）
       const validTime = 3600; // 1小時 = 3600秒
-      const entryTimes = 5; // 可使用 5 次
+      const entryTimes = 99; // 可使用 99 次
       
       const requestBody = {
         userId: userId,

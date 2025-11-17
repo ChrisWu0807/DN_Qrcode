@@ -1,0 +1,24 @@
+# Zeabur 環境變數完整清單
+# 複製以下內容到 Zeabur 環境變數設置
+
+# 資料庫配置（MySQL）
+DB_HOST=43.167.198.15
+DB_PORT=31170
+DB_USER=root
+DB_PASSWORD=YsEcZ4dU7gXQlhz2RAN1Du90385kCFL6
+DB_NAME=zeabur
+
+# 伺服器端口（Zeabur 自動設置，使用 WEB_PORT）
+PORT=${WEB_PORT}
+
+# 訪客證有效期（小時）
+VISITOR_PASS_EXPIRY_HOURS=1
+
+# 外部 SenseLink API 配置
+SENSELINK_API_BASE_URL=http://facereg.aoy.tw/sl
+APP_KEY=c6324cfa50169e85
+APP_SECRET=e30af86f8f4e75d128ba4288597dea3c
+
+# 其他密碼（用途請確認）
+PASSWORD=Z3LfbTm5SowCP2n70trD6l9i4X8FjAY1
+
